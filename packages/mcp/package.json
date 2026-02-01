@@ -1,0 +1,43 @@
+{
+  "name": "@forsyteco/brand-mcp",
+  "version": "0.0.1",
+  "description": "Model Context Protocol server for Forsyte Brand UI",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/forsyteco/brand-ui.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "server"
+  ],
+  "author": "etiCloud Ltd",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check-types": "tsc -p tsconfig.build.json --noEmit",
+    "lint": "tsc -p tsconfig.build.json --noEmit",
+    "test": "node -e \"console.log('No tests for @forsyteco/brand-mcp')\"",
+    "test:cov": "node -e \"console.log('No tests for @forsyteco/brand-mcp')\""
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.24.3",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/inspector": "^0.17.5"
+  }
+}
