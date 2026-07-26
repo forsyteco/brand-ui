@@ -19,6 +19,7 @@ const componentEntries = [
   'spinner',
   'button',
   'label',
+  'popover',
 ];
 
 const libEntries = {

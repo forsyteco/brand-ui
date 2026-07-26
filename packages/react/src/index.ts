@@ -12,3 +12,6 @@ export type { ButtonProps, IconOnlyButtonProps, IconOnlyButtonSize } from './but
 
 export { Label } from './label'
 export type { LabelProps } from './label'
+
+export { Popover, PopoverTrigger, PopoverContent } from './popover'
+export type { PopoverProps, PopoverTriggerProps, PopoverContentProps } from './popover'

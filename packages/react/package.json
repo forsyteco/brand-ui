@@ -66,6 +66,16 @@
         "default": "./dist/label/index.cjs"
       }
     },
+    "./popover": {
+      "import": {
+        "types": "./dist/popover/index.d.ts",
+        "default": "./dist/popover/index.mjs"
+      },
+      "require": {
+        "types": "./dist/popover/index.d.ts",
+        "default": "./dist/popover/index.cjs"
+      }
+    },
     "./styles.css": "./styles.css",
     "./components.css": "./dist/brand-ui.css",
     "./fonts/*": "./fonts/*",
