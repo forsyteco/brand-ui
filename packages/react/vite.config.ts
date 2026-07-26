@@ -69,6 +69,7 @@ export default defineConfig({
         id.startsWith('react-day-picker') ||
         id === '@headlessui/react',
       output: {
+        assetFileNames: 'brand-ui.css',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',

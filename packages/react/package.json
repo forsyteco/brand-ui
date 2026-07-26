@@ -37,6 +37,7 @@
       }
     },
     "./styles.css": "./styles.css",
+    "./components.css": "./dist/brand-ui.css",
     "./fonts/*": "./fonts/*",
     "./tailwind": "./tailwind.config.js"
   },
@@ -59,6 +60,9 @@
   ],
   "author": "etiCloud Ltd",
   "license": "MIT",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "dependencies": {
     "@github/relative-time-element": "^5.0.0",
     "@headlessui/react": "^2.2.9",

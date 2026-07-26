@@ -1,0 +1,19 @@
+.root {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.root:focus,
+.root:active,
+.root:focus-within {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  white-space: normal;
+  clip-path: none;
+}
