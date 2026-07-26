@@ -26,6 +26,16 @@
         "default": "./dist/visually-hidden/index.cjs"
       }
     },
+    "./theme": {
+      "import": {
+        "types": "./dist/theme/index.d.ts",
+        "default": "./dist/theme/index.mjs"
+      },
+      "require": {
+        "types": "./dist/theme/index.d.ts",
+        "default": "./dist/theme/index.cjs"
+      }
+    },
     "./styles.css": "./styles.css",
     "./fonts/*": "./fonts/*",
     "./tailwind": "./tailwind.config.js"

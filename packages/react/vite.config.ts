@@ -14,6 +14,7 @@ const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
 const componentEntries = [
+  'theme',
   'visually-hidden',
 ];
 
