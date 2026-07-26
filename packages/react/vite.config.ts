@@ -22,6 +22,7 @@ const componentEntries = [
   'popover',
   'input',
   'form-field',
+  'textarea',
 ];
 
 const libEntries = {

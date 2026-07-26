@@ -28,3 +28,6 @@ export type {
   FormFieldErrorProps,
   FormFieldLabelActionsProps,
 } from './form-field'
+
+export { Textarea } from './textarea'
+export type { TextareaProps } from './textarea'
