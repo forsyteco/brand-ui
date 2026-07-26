@@ -76,6 +76,22 @@
   --color-spinner-primary: rgb(var(--accent));
   --color-spinner-secondary: rgb(var(--neutral-200));
   --color-spinner-tertiary: rgb(var(--brand-black));
+
+  --color-brand-black: rgb(var(--brand-black));
+  --color-brand-yellow: rgb(var(--brand-yellow));
+  --color-brand-grey: rgb(var(--brand-grey));
+  --color-brand-blue: rgb(var(--brand-blue));
+  --color-brand-white: rgb(var(--brand-white));
+
+  --spacing-section-sm: 3rem;
+  --spacing-section-md: 4rem;
+  --spacing-section-lg: 6rem;
+  --spacing-section-xl: 8rem;
+
+  --spacing-container-sm: 1rem;
+  --spacing-container-md: 2rem;
+  --spacing-container-lg: 4rem;
+  --spacing-container-xl: 6rem;
 }
 
 :root {
@@ -84,6 +100,8 @@
   --brand-yellow: 255 222 19;
   --brand-black: 0 0 0;
   --brand-white: 255 255 255;
+  --brand-grey: 28 28 28;
+  --brand-blue: 246 249 255;
 
   --neutral-950: 28 28 28;
   --neutral-900: 42 43 45;
