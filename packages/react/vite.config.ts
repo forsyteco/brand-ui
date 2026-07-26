@@ -28,6 +28,7 @@ const componentEntries = [
   'select',
   'card',
   'skeleton',
+  'avatar',
 ];
 
 const libEntries = {

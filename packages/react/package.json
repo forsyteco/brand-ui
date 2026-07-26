@@ -156,6 +156,16 @@
         "default": "./dist/skeleton/index.cjs"
       }
     },
+    "./avatar": {
+      "import": {
+        "types": "./dist/avatar/index.d.ts",
+        "default": "./dist/avatar/index.mjs"
+      },
+      "require": {
+        "types": "./dist/avatar/index.d.ts",
+        "default": "./dist/avatar/index.cjs"
+      }
+    },
     "./styles.css": "./styles.css",
     "./components.css": "./dist/brand-ui.css",
     "./fonts/*": "./fonts/*",
