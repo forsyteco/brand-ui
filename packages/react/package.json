@@ -36,6 +36,16 @@
         "default": "./dist/theme/index.cjs"
       }
     },
+    "./spinner": {
+      "import": {
+        "types": "./dist/spinner/index.d.ts",
+        "default": "./dist/spinner/index.mjs"
+      },
+      "require": {
+        "types": "./dist/spinner/index.d.ts",
+        "default": "./dist/spinner/index.cjs"
+      }
+    },
     "./styles.css": "./styles.css",
     "./components.css": "./dist/brand-ui.css",
     "./fonts/*": "./fonts/*",

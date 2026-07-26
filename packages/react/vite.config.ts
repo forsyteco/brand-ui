@@ -16,6 +16,7 @@ const dirname =
 const componentEntries = [
   'theme',
   'visually-hidden',
+  'spinner',
 ];
 
 const libEntries = {
