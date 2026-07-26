@@ -18,6 +18,7 @@ const componentEntries = [
   'visually-hidden',
   'spinner',
   'button',
+  'label',
 ];
 
 const libEntries = {

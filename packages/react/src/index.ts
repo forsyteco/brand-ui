@@ -9,3 +9,6 @@ export type { SpinnerProps } from './spinner'
 
 export { Button, buttonVariants } from './button'
 export type { ButtonProps, IconOnlyButtonProps, IconOnlyButtonSize } from './button'
+
+export { Label } from './label'
+export type { LabelProps } from './label'
