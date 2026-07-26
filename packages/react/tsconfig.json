@@ -3,7 +3,10 @@
     "compilerOptions": {
       "outDir": "./dist",
       "typeRoots": ["../../node_modules/@types", "./node_modules/@types", "./@types"],
-      "plugins": [{"name": "typescript-plugin-css-modules"}]
+      "plugins": [{"name": "typescript-plugin-css-modules"}],
+      "paths": {
+        "#test-utils": ["./src/test/test-utils.tsx"]
+      }
     },
     "include": [
       "@types/**/*.ts",
