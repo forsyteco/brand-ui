@@ -36,6 +36,16 @@ jobs:
     needs: [lint, type-check, unit-test]
     uses: ./.github/workflows/production-build.yml
 
+  deploy-storybook:
+    name: Deploy Storybook
+    needs: [build]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy-storybook.yml
+
   required:
     needs: [lint, type-check, unit-test, build]
     if: always()
