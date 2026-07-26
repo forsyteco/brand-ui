@@ -17,6 +17,7 @@ const componentEntries = [
   'theme',
   'visually-hidden',
   'spinner',
+  'button',
 ];
 
 const libEntries = {

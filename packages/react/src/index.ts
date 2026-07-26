@@ -6,3 +6,6 @@ export type { ThemeProviderProps, ColourScheme, ThemeMode, ThemeContextValue } f
 
 export { Spinner } from './spinner'
 export type { SpinnerProps } from './spinner'
+
+export { Button, buttonVariants } from './button'
+export type { ButtonProps, IconOnlyButtonProps, IconOnlyButtonSize } from './button'
