@@ -1,6 +1,6 @@
 {
   "name": "@forsyteco/brand-ui",
-  "version": "0.1.0",
+  "version": "0.0.4",
   "description": "An implementation of Forsyte's   design system using React 🐝",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
