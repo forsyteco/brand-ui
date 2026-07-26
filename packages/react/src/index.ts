@@ -48,3 +48,6 @@ export type { SkeletonProps } from './skeleton'
 
 export { Avatar, AvatarFallback, AvatarImage } from './avatar'
 export type { AvatarProps, AvatarFallbackProps, AvatarImageProps } from './avatar'
+
+export { DropdownMenu, DropdownMenuItem, DropdownMenuButton } from './dropdown-menu'
+export type { DropdownMenuProps, DropdownMenuItemProps, DropdownMenuButtonProps } from './dropdown-menu'
