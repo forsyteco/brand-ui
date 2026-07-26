@@ -1,0 +1,1 @@
+const o={"data-1p-ignore":!0,"data-lpignore":"true","data-bwignore":!0,"data-form-type":"other","data-protonpass-ignore":"true"};function e({autoComplete:r}={}){return r!==void 0&&r!=="off"?{autoComplete:r}:{autoComplete:"off",...o}}export{e as r};

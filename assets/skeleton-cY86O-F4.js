@@ -1,0 +1,1 @@
+import{j as s}from"./iframe-De_LvFYD.js";import{c as t}from"./tailwind-BykweIWy.js";function a({className:e,...o}){return s.jsx("span",{"data-slot":"skeleton",className:t("block max-w-full animate-pulse rounded-xs bg-black/10 dark:bg-white/20",e),...o})}a.__docgenInfo={description:"",methods:[],displayName:"Skeleton"};export{a as S};
