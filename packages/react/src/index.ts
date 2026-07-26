@@ -40,3 +40,5 @@ export type { SwitchProps } from './switch'
 
 export { Select } from './select'
 export type { SelectProps, SelectOption } from './select'
+
+export { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card'

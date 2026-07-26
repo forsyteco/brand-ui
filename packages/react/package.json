@@ -136,6 +136,16 @@
         "default": "./dist/select/index.cjs"
       }
     },
+    "./card": {
+      "import": {
+        "types": "./dist/card/index.d.ts",
+        "default": "./dist/card/index.mjs"
+      },
+      "require": {
+        "types": "./dist/card/index.d.ts",
+        "default": "./dist/card/index.cjs"
+      }
+    },
     "./styles.css": "./styles.css",
     "./components.css": "./dist/brand-ui.css",
     "./fonts/*": "./fonts/*",

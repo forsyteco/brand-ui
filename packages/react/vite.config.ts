@@ -26,6 +26,7 @@ const componentEntries = [
   'checkbox',
   'switch',
   'select',
+  'card',
 ];
 
 const libEntries = {
