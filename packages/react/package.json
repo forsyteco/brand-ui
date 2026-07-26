@@ -186,6 +186,16 @@
         "default": "./dist/breadcrumb/index.cjs"
       }
     },
+    "./dialog": {
+      "import": {
+        "types": "./dist/dialog/index.d.ts",
+        "default": "./dist/dialog/index.mjs"
+      },
+      "require": {
+        "types": "./dist/dialog/index.d.ts",
+        "default": "./dist/dialog/index.cjs"
+      }
+    },
     "./styles.css": "./styles.css",
     "./components.css": "./dist/brand-ui.css",
     "./fonts/*": "./fonts/*",

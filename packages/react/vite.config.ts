@@ -31,6 +31,7 @@ const componentEntries = [
   'avatar',
   'dropdown-menu',
   'breadcrumb',
+  'dialog',
 ];
 
 const libEntries = {
