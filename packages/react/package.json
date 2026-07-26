@@ -86,6 +86,16 @@
         "default": "./dist/input/index.cjs"
       }
     },
+    "./form-field": {
+      "import": {
+        "types": "./dist/form-field/index.d.ts",
+        "default": "./dist/form-field/index.mjs"
+      },
+      "require": {
+        "types": "./dist/form-field/index.d.ts",
+        "default": "./dist/form-field/index.cjs"
+      }
+    },
     "./styles.css": "./styles.css",
     "./components.css": "./dist/brand-ui.css",
     "./fonts/*": "./fonts/*",

@@ -18,3 +18,13 @@ export type { PopoverProps, PopoverTriggerProps, PopoverContentProps } from './p
 
 export { Input } from './input'
 export type { InputProps, TextInputProps, CurrencyInputModeProps } from './input'
+
+export { FormField } from './form-field'
+export type {
+  FormFieldProps,
+  FormFieldLabelProps,
+  FormFieldDescriptionProps,
+  FormFieldControlProps,
+  FormFieldErrorProps,
+  FormFieldLabelActionsProps,
+} from './form-field'

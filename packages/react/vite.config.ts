@@ -21,6 +21,7 @@ const componentEntries = [
   'label',
   'popover',
   'input',
+  'form-field',
 ];
 
 const libEntries = {
