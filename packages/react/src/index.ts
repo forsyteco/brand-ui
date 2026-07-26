@@ -34,3 +34,6 @@ export type { TextareaProps } from './textarea'
 
 export { Checkbox } from './checkbox'
 export type { CheckboxProps } from './checkbox'
+
+export { Switch } from './switch'
+export type { SwitchProps } from './switch'
