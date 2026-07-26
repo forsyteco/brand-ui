@@ -1,0 +1,181 @@
+.root {
+  --input-adornment-size: 1rem;
+  --input-active-border: var(--field-input-active-border);
+  --input-border: var(--field-input-border);
+  --input-halo: var(--field-input-halo);
+  --input-shadow-rest: 0 1px 2px rgb(0 0 0 / 0.05);
+
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: stretch;
+  border-radius: 10px;
+  border: 1px solid var(--input-border);
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-size: var(--text-base);
+  line-height: var(--text-base-line-height);
+  box-shadow: var(--input-shadow-rest);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.root:hover:not(:disabled):not(:has(:disabled)):not(:has(input:focus)):not(:focus-visible):not([data-popup-open]) {
+  border-color: color-mix(in srgb, rgb(var(--foreground)) 20%, transparent);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+}
+
+.root:has(input:focus),
+.root:focus-visible,
+.root[data-popup-open] {
+  border-color: rgb(var(--input-active-border));
+  box-shadow: 0 0 0 3px var(--input-halo);
+}
+
+.root--error,
+.root--success {
+  border-color: rgb(var(--input-active-border));
+}
+
+.root--error {
+  --input-active-border: var(--destructive);
+  --input-halo: color-mix(in srgb, rgb(var(--destructive)) 25%, rgb(var(--background)));
+}
+
+.root--success {
+  --input-active-border: var(--success);
+  --input-halo: color-mix(in srgb, rgb(var(--success)) 25%, rgb(var(--background)));
+}
+
+.root--error:hover:not(:disabled):not(:has(:disabled)):not(:has(input:focus)):not(:focus-visible):not([data-popup-open]),
+.root--success:hover:not(:disabled):not(:has(:disabled)):not(:has(input:focus)):not(:focus-visible):not([data-popup-open]) {
+  border-color: rgb(var(--input-active-border));
+}
+
+.root--error:has(input:focus),
+.root--error:focus-visible,
+.root--error[data-popup-open],
+.root--success:has(input:focus),
+.root--success:focus-visible,
+.root--success[data-popup-open] {
+  border-color: rgb(var(--input-active-border));
+  box-shadow:
+    0 0 0 3px var(--input-halo),
+    var(--input-shadow-rest);
+}
+
+.root:disabled,
+.root:has(:disabled) {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.root:disabled:hover,
+.root:has(:disabled):hover {
+  border-color: var(--input-border);
+  box-shadow: var(--input-shadow-rest);
+}
+
+.size-default {
+  height: 2.25rem;
+  --input-pad-inline: 0.75rem;
+}
+
+.size-sm {
+  height: 2rem;
+  --input-pad-inline: 0.625rem;
+}
+
+.size-lg {
+  height: 2.5rem;
+  --input-pad-inline: 1rem;
+  font-size: var(--text-lg);
+  line-height: var(--text-lg-line-height);
+}
+
+.slot {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  pointer-events: none;
+}
+
+.slot-pad {
+  padding-inline: var(--input-pad-inline);
+}
+
+.slot :is(button, a) {
+  pointer-events: auto;
+}
+
+.slot :is(button, a):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(var(--field-halo));
+  border-radius: 0.25rem;
+}
+
+.slot :is(svg, img) {
+  width: var(--input-adornment-size);
+  height: var(--input-adornment-size);
+  flex-shrink: 0;
+}
+
+.slot-action-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--input-adornment-size);
+  height: var(--input-adornment-size);
+  min-width: var(--input-adornment-size);
+  min-height: var(--input-adornment-size);
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+}
+
+.slot-action-button :is(svg, img) {
+  width: var(--input-adornment-size);
+  height: var(--input-adornment-size);
+}
+
+.slot-action-button:hover {
+  color: rgb(var(--foreground));
+}
+
+.input {
+  min-height: 0;
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.input-pad {
+  padding-inline: var(--input-pad-inline);
+}
+
+.input-pad-none-left {
+  padding-left: 0;
+}
+
+.input-pad-none-right {
+  padding-right: 0;
+}
+
+.input::placeholder {
+  color: rgb(var(--field-placeholder));
+}
+
+.input:disabled,
+.input:read-only {
+  cursor: not-allowed;
+}

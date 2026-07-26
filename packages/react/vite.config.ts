@@ -20,6 +20,7 @@ const componentEntries = [
   'button',
   'label',
   'popover',
+  'input',
 ];
 
 const libEntries = {

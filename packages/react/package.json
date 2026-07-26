@@ -76,6 +76,16 @@
         "default": "./dist/popover/index.cjs"
       }
     },
+    "./input": {
+      "import": {
+        "types": "./dist/input/index.d.ts",
+        "default": "./dist/input/index.mjs"
+      },
+      "require": {
+        "types": "./dist/input/index.d.ts",
+        "default": "./dist/input/index.cjs"
+      }
+    },
     "./styles.css": "./styles.css",
     "./components.css": "./dist/brand-ui.css",
     "./fonts/*": "./fonts/*",
@@ -104,6 +114,7 @@
     "**/*.css"
   ],
   "dependencies": {
+    "@base-ui/react": "^1.3.0",
     "@github/relative-time-element": "^5.0.0",
     "@headlessui/react": "^2.2.9",
     "@lit-labs/react": "^2.1.3",
