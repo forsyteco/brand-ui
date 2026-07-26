@@ -42,3 +42,6 @@ export { Select } from './select'
 export type { SelectProps, SelectOption } from './select'
 
 export { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card'
+
+export { Skeleton } from './skeleton'
+export type { SkeletonProps } from './skeleton'

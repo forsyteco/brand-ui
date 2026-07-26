@@ -27,6 +27,7 @@ const componentEntries = [
   'switch',
   'select',
   'card',
+  'skeleton',
 ];
 
 const libEntries = {
