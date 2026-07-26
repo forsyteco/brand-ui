@@ -37,3 +37,6 @@ export type { CheckboxProps } from './checkbox'
 
 export { Switch } from './switch'
 export type { SwitchProps } from './switch'
+
+export { Select } from './select'
+export type { SelectProps, SelectOption } from './select'

@@ -126,6 +126,16 @@
         "default": "./dist/switch/index.cjs"
       }
     },
+    "./select": {
+      "import": {
+        "types": "./dist/select/index.d.ts",
+        "default": "./dist/select/index.mjs"
+      },
+      "require": {
+        "types": "./dist/select/index.d.ts",
+        "default": "./dist/select/index.cjs"
+      }
+    },
     "./styles.css": "./styles.css",
     "./components.css": "./dist/brand-ui.css",
     "./fonts/*": "./fonts/*",

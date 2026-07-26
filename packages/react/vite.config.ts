@@ -25,6 +25,7 @@ const componentEntries = [
   'textarea',
   'checkbox',
   'switch',
+  'select',
 ];
 
 const libEntries = {
