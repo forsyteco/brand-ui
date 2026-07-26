@@ -1,0 +1,46 @@
+name: All jobs
+
+on:
+  merge_group:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev
+      - 'feature/*'
+      - 'release/*'
+  pull_request:
+    branches:
+      - main
+      - dev
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  type-check:
+    name: Type check
+    uses: ./.github/workflows/check-types.yml
+
+  lint:
+    name: Linters
+    uses: ./.github/workflows/lint.yml
+
+  unit-test:
+    name: Tests
+    uses: ./.github/workflows/unit-tests.yml
+
+  build:
+    name: Production builds
+    needs: [lint, type-check, unit-test]
+    uses: ./.github/workflows/production-build.yml
+
+  required:
+    needs: [lint, type-check, unit-test, build]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if conditional jobs failed
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped') || contains(needs.*.result, 'cancelled')
+        run: exit 1
