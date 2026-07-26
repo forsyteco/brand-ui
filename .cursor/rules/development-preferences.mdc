@@ -1,0 +1,39 @@
+---
+description: Coding and workflow preferences for this repository
+alwaysApply: true
+---
+
+# Development Preferences
+
+## Scope and focus
+
+- Focus on the areas of code relevant to the task
+- Only make changes that are requested or that you are confident are well understood and related to the request
+- Do not touch code that is unrelated to the task
+- Before changing code, consider what other methods and areas might be affected
+
+## Simplicity and consistency
+
+- Prefer simple solutions
+- Avoid duplication — check for existing code and functionality before adding new logic
+- When fixing a bug, exhaust options within the current implementation before introducing a new pattern or technology
+- If you must replace an approach, remove the old implementation so logic is not duplicated
+- Avoid major changes to patterns and architecture once a feature works well, unless explicitly instructed
+- Keep the codebase clean and organized
+- Refactor when a file grows beyond roughly 200–300 lines
+
+## Environments and data
+
+- Write code that accounts for dev, test, and prod environments
+- Mock data belongs in tests only — never in dev or prod code paths
+- Never add stubbing or fake data patterns that affect dev or prod behaviour
+- **Never overwrite `.env` files without asking and confirming first**
+
+## Testing and scripts
+
+- Write thorough tests for all major functionality
+- Avoid one-off scripts committed to the repo when a command or existing tooling suffices
+
+## Protected areas
+
+- **Never overwrite shared primitive or vendor UI components without explicit instruction** (e.g. generated or third-party building blocks)

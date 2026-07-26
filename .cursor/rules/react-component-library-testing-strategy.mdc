@@ -1,0 +1,129 @@
+---
+description: Vitest + React Testing Library strategy for the component library
+globs:
+  - "**/*.test.ts"
+  - "**/*.test.tsx"
+  - "**/*.spec.ts"
+  - "**/*.spec.tsx"
+  - "**/*.test-utils.tsx"
+alwaysApply: false
+---
+
+# React Component Library Testing Strategy
+
+## Purpose
+
+Testing practices for **packages/react**: a Vite + React 19 public brand component library using **Vitest**, **jsdom**, and **React Testing Library**.
+
+For naming and AAA structure, see `unit-test-style.mdc`. This rule covers library-specific tooling and patterns.
+
+---
+
+## Test types
+
+### Unit / component tests (primary)
+
+Validate a single component, helper, or hook in isolation under jsdom.
+
+- Run with `pnpm --filter @forsyteco/brand-ui test` (or `pnpm vitest run --dir packages/react`)
+- Config: `packages/react/vitest.unit.config.ts`
+- Setup: `packages/react/vitest.setup.ts` (jest-dom matchers, ResizeObserver shim)
+
+### Visual / manual coverage
+
+Use **Storybook** stories (`*.stories.tsx`) colocated with components for variants, edge cases, and design review. Stories are not a substitute for Vitest behaviour tests on interactive logic.
+
+This repo does **not** maintain Playwright or HTTP e2e tests.
+
+---
+
+## File location and naming (MANDATORY)
+
+- Colocate tests next to source: `packages/react/src/<feature>/<name>.test.tsx`
+- Pure helpers: `*.test.ts` in the same folder
+- Shared fixtures/helpers: `*.test-utils.tsx` beside the feature (e.g. `data-table.test-utils.tsx`)
+- One dedicated spec file per component or module
+- Do **not** use a separate `test/unit/**` tree for new tests
+
+---
+
+## Style (inherits unit-test-style)
+
+```tsx
+describe('Combobox', () => {
+  describe('when a value is selected', () => {
+    it('should display the selected label', async () => {
+      // Arrange
+      renderCombobox({ options, value: options[0] });
+
+      // Act
+      const input = screen.getByDisplayValue('Option 1');
+
+      // Assert
+      expect(input).toBeInTheDocument();
+    });
+  });
+});
+```
+
+Canonical examples: `input.test.tsx`, `combobox.test.tsx`, `form-field.test.tsx`.
+
+---
+
+## Rendering
+
+Import `render`, `screen`, and `waitFor` from `@testing-library/react` unless a shared wrapper is introduced.
+
+When components need global providers (theme, future context), add `packages/react/src/test/render.tsx` and use that instead of raw RTL `render` — do not copy app-specific providers from forsyteco-app.
+
+---
+
+## User interaction
+
+- Prefer **`userEvent.setup()`** for clicks, typing, and keyboard — not static `userEvent` or `fireEvent`, except for edge cases fireEvent handles better (e.g. `submit` capture).
+- Call `const user = userEvent.setup()` once per test; always `await` interactions.
+- Use `await user.tab()` (or click outside) to blur fields — avoid raw `element.blur()` so React updates run inside `act`.
+- Wrap async UI assertions in `await waitFor(() => { ... })`.
+
+---
+
+## Mocking
+
+- Use **`vi.fn()`** from Vitest (not `jest.fn()`).
+- Clear mocks in `beforeEach` with `vi.clearAllMocks()` when needed.
+- Mock at module level with `vi.mock(...)` when a dependency must be stubbed; mock only what the test uses.
+- Do not mock internal library wiring — render real components.
+
+---
+
+## Querying the DOM
+
+- Prefer accessibility queries: `getByRole`, `getByLabelText`, `getByPlaceholderText`.
+- Use `data-testid` when the same text appears in multiple places or no semantic role fits.
+- Scope with `within(...)` instead of broad `screen.queryByText` when ambiguity is possible.
+
+---
+
+## What to test
+
+- Exported public behaviour: variants, disabled/error states, callbacks, keyboard interaction
+- Pure helpers and mappers in isolation (`*.test.ts`)
+- Accessibility attributes where behaviour depends on them (`aria-invalid`, labels, roles)
+
+Avoid asserting internal class names or implementation details unless they encode a contract (e.g. a documented `data-*` hook).
+
+---
+
+## Before writing new tests
+
+- Search for an existing `*.test.ts(x)` for the module; extend it rather than duplicating.
+- Run the existing spec first — if it already fails as expected, fix the code before adding tests.
+
+---
+
+## Checklist for new components
+
+- [ ] Colocated `*.test.tsx` with `when` / `should` naming and AAA comments
+- [ ] Storybook story for visual states
+- [ ] Interactive flows use `userEvent.setup()`, not `fireEvent`
+- [ ] `pnpm --filter @forsyteco/brand-ui test` passes

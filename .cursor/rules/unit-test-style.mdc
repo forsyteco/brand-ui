@@ -1,0 +1,196 @@
+---
+description: Framework-agnostic unit test writing style using When and AAA
+globs:
+  - "**/*.spec.ts"
+  - "**/*.spec.tsx"
+  - "**/*.test.ts"
+  - "**/*.test.tsx"
+alwaysApply: true
+---
+
+# Unit Test Style Rules
+
+## Goal
+Write clear, maintainable unit tests using:
+- AAA: Arrange, Act, Assert
+- When-style context naming
+- Should-style expectations
+
+These rules are framework-agnostic and apply to any TypeScript/JavaScript codebase.
+For React component library tooling (Vitest, RTL, colocation), see `react-component-library-testing-strategy.mdc`.
+
+---
+
+## Naming (MANDATORY)
+
+Use this structure:
+
+```ts
+describe('UnitUnderTest', () => {
+  describe('when <context>', () => {
+    it('should <expected behaviour>', async () => {});
+  });
+});
+```
+
+Example:
+
+```ts
+describe('CreateUserService', () => {
+  describe('when the email already exists', () => {
+    it('should throw a conflict error', async () => {});
+  });
+});
+```
+
+Avoid:
+- `it('works')`
+- `it('tests create user')`
+- `describe('valid case')`
+
+---
+
+## AAA structure (MANDATORY)
+
+Every test must include:
+1. Arrange
+2. Act
+3. Assert
+
+Use comments for each section.
+
+Example:
+
+```ts
+it('should return the user by id', async () => {
+  // Arrange
+  const user = { id: 'usr-123', email: 'test@example.com' };
+  repository.findById.mockResolvedValue(user);
+
+  // Act
+  const result = await service.getById('usr-123');
+
+  // Assert
+  expect(repository.findById).toHaveBeenCalledWith('usr-123');
+  expect(result).toEqual(user);
+});
+```
+
+---
+
+## Instantiation
+For most class/function tests, instantiate the unit under test directly with mocked dependencies. This keeps tests fast and isolates the unit from any DI container or framework wiring.
+
+Preferred:
+
+```ts
+const repository = {
+  findById: jest.fn(),
+};
+
+const service = new UserService(repository as any);
+```
+
+Reach for a framework's test harness (e.g. a DI test module) only when direct instantiation cannot reproduce the behaviour you need to verify. See the relevant framework strategy rule for those cases.
+
+---
+
+## Mocking rules
+- Use the test runner's mock fn (`vi.fn()` in Vitest, `jest.fn()` in Jest)
+- Mock only what the test actually uses
+- Keep mock values minimal and relevant
+- Clear mocks between tests when needed
+
+Example:
+
+```ts
+beforeEach(() => {
+  vi.clearAllMocks();
+});
+```
+
+---
+
+## Assertions
+Assert:
+- returned result
+- thrown error
+- important collaborator interactions
+
+Do not over-assert internal implementation details.
+
+Good:
+
+```ts
+expect(result).toEqual(expected);
+expect(repository.save).toHaveBeenCalledWith(entity);
+```
+
+---
+
+## Async and exception testing
+- Always `await` async calls
+- Use `rejects` for promise failures
+- Avoid `done()` callbacks
+
+Example:
+
+```ts
+it('should throw a not found error', async () => {
+  // Arrange
+  repository.findById.mockResolvedValue(null);
+
+  // Act
+  const action = () => service.getById('missing-id');
+
+  // Assert
+  await expect(action()).rejects.toBeInstanceOf(NotFoundError);
+});
+```
+
+---
+
+## Test data and style
+- Use small readable fixtures
+- Prefer factory helpers when reused
+- Use single quotes
+- Keep tests concise
+- Prefer explicit expectations over snapshots
+
+---
+
+## Example
+```ts
+describe('CreateUserService', () => {
+  let service: CreateUserService;
+  let userRepository: { findByEmail: jest.Mock; save: jest.Mock };
+
+  beforeEach(() => {
+    userRepository = {
+      findByEmail: jest.fn(),
+      save: jest.fn(),
+    };
+
+    service = new CreateUserService(userRepository as any);
+  });
+
+  describe('when the email is not already in use', () => {
+    it('should create and return the user', async () => {
+      // Arrange
+      const input = { email: 'jane@example.com', firstName: 'Jane' };
+      const savedUser = { id: 'usr-123', ...input };
+
+      userRepository.findByEmail.mockResolvedValue(null);
+      userRepository.save.mockResolvedValue(savedUser);
+
+      // Act
+      const result = await service.execute(input);
+
+      // Assert
+      expect(userRepository.findByEmail).toHaveBeenCalledWith('jane@example.com');
+      expect(userRepository.save).toHaveBeenCalled();
+      expect(result).toEqual(savedUser);
+    });
+  });
+});
+```
