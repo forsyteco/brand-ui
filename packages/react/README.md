@@ -1,6 +1,6 @@
 # @forsyteco/brand-ui
 
-React component library for Forsyte app, built with React 19, TypeScript, and Tailwind CSS 4.
+Forsyte's public brand design system for React, built with React 19, TypeScript, and Tailwind CSS 4.
 
 ## Installation
 
