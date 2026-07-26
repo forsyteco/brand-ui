@@ -51,3 +51,13 @@ export type { AvatarProps, AvatarFallbackProps, AvatarImageProps } from './avata
 
 export { DropdownMenu, DropdownMenuItem, DropdownMenuButton } from './dropdown-menu'
 export type { DropdownMenuProps, DropdownMenuItemProps, DropdownMenuButtonProps } from './dropdown-menu'
+
+export {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from './breadcrumb'
