@@ -1,0 +1,46 @@
+---
+description: React 19 component library conventions for packages/react
+globs:
+  - "packages/react/**/*.{ts,tsx}"
+alwaysApply: true
+---
+
+# React Component Library Conventions
+
+Applies to **@forsyteco/brand-ui** (`packages/react`). This is a publishable public brand design-system package, not a Next.js application.
+
+## Principles
+
+- Functional components only — no class components.
+- Prefer named exports for public components and types.
+- Colocate feature code: `component.tsx`, `*.module.css`, `*.test.tsx`, `*.stories.tsx` under `packages/react/src/<feature>/`.
+- Minimize `useEffect` and local state when values can be derived from props.
+- No data fetching in the library — consumers own server state.
+
+## TypeScript
+
+- Prefer `interface` over `type` for object shapes.
+- Avoid `enum` — use const maps.
+- Export `*Props` types for public components.
+- Avoid new `any` in non-test code.
+
+## Public components
+
+- Use `forwardRef` for interactive primitives where consumers need DOM access (match siblings like `Button`, `Label`).
+- Set `displayName` on `forwardRef` and compound subcomponents.
+- Use the `function` keyword for top-level pure helpers.
+
+## Styling
+
+- Tailwind CSS 4 and CSS modules (`*.module.css`) — follow patterns in the same feature folder.
+- Responsive, mobile-first layouts where layout components need breakpoints.
+
+## File layout
+
+- Directories and files: `lowercase-with-dashes` (e.g. `date-picker/`).
+- Refactor when a file grows beyond roughly 200–300 lines.
+
+## Related rules
+
+- Testing: `react-component-library-testing-strategy.mdc`, `unit-test-style.mdc`
+- Workflow: `development-preferences.mdc`

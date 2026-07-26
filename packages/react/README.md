@@ -1,6 +1,6 @@
 # @forsyteco/brand-ui
 
-React component library for Forsyte app, built with React 19, TypeScript, and Tailwind CSS 4.
+Forsyte's public brand design system for React, built with React 19, TypeScript, and Tailwind CSS 4.
 
 ## Installation
 
@@ -22,65 +22,30 @@ npm install react@^19.2.1 react-dom@^19.2.1 tailwindcss@^4.1.17
 
 ## Setup
 
-### 1. Import Tailwind base styles
-
-Make sure Tailwind CSS is imported in your application:
-
 ```css
-/* src/index.css or your main CSS file */
+/* your global stylesheet, in this order */
 @import 'tailwindcss';
-```
-
-### 2. Import the design system styles
-
-Pull in the design tokens, fonts, and utilities provided by the library:
-
-```css
-/* src/index.css or your main CSS file, after tailwindcss */
 @import '@forsyteco/brand-ui/styles.css';
+@import '@forsyteco/brand-ui/components.css';
 ```
 
-### 3. Import components
+`styles.css` provides tokens, fonts, and brand colour utilities. `components.css` provides the compiled CSS-module styles — components render unstyled without it.
 
-```typescript
-import { Spinner } from '@forsyteco/brand-ui'
-import type { SpinnerProps } from '@forsyteco/brand-ui'
-```
-
-### Example
+Wrap your app in `ThemeProvider`:
 
 ```tsx
-import { Spinner } from '@forsyteco/brand-ui'
+import { ThemeProvider } from '@forsyteco/brand-ui'
 
-function App() {
-  return (
-    <div>
-      <Spinner />
-    </div>
-  )
+export function App({ children }: { children: React.ReactNode }) {
+  return <ThemeProvider>{children}</ThemeProvider>
 }
 ```
 
 ## Components
 
-All components use Tailwind CSS classes directly. Make sure Tailwind CSS is configured in your project.
+Avatar, Breadcrumb, Button, Card, Checkbox, Dialog, DropdownMenu, FormField, Input, Label, Popover, Select, Skeleton, Spinner, Switch, Textarea, ThemeProvider/useTheme, VisuallyHidden.
 
-### Spinner
-
-A loading spinner component.
-
-```tsx
-import { Spinner } from '@forsyteco/brand-ui'
-
-// Basic usage
-<Spinner />
-
-// Full-width centered spinner
-<Spinner full />
-
-// Custom styling with Tailwind classes
-<Spinner className="text-blue-500 w-8 h-8" />
-```
+Each component is also available as a subpath import, e.g. `@forsyteco/brand-ui/button`.
 
 ## Development
 

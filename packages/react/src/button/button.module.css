@@ -1,0 +1,171 @@
+.base {
+  --button-hover-mix: 94%;
+  --button-active-mix: 90%;
+  --button-hover-mix-secondary: 80%;
+  --button-active-mix-secondary: 72%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+  outline: none;
+}
+
+.base:focus-visible {
+  box-shadow:
+    0 0 0 2px rgb(var(--ring)),
+    0 0 0 4px rgb(var(--background));
+}
+
+.base:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.inactive {
+  opacity: 0.6;
+}
+
+.size-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: var(--text-base);
+  line-height: var(--text-base-line-height);
+}
+
+.size-md {
+  padding: 0.5rem 1rem;
+  font-size: var(--text-base);
+  line-height: var(--text-base-line-height);
+}
+
+.size-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: var(--text-base);
+  line-height: var(--text-base-line-height);
+}
+
+.size-icon {
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0;
+}
+
+.size-icon-sm {
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm-line-height);
+}
+
+.size-icon-md {
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0;
+  font-size: var(--text-base);
+  line-height: var(--text-base-line-height);
+}
+
+.size-icon-lg {
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0;
+  font-size: var(--text-lg);
+  line-height: var(--text-lg-line-height);
+}
+
+.shape-square {
+  border-radius: 10px;
+}
+
+.shape-circle {
+  border-radius: 9999px;
+}
+
+.icon-sm {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.icon-md {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.icon-lg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+.variant-primary,
+.variant-accent {
+  --button-fill: rgb(var(--accent));
+  background-color: var(--button-fill);
+  color: rgb(var(--accent-foreground));
+}
+
+.variant-secondary {
+  --button-fill: rgb(var(--primary));
+  --button-fill-target: rgb(var(--primary-foreground));
+  background-color: var(--button-fill);
+  color: rgb(var(--primary-foreground));
+}
+
+.variant-destructive {
+  --button-fill: rgb(var(--destructive));
+  background-color: var(--button-fill);
+  color: rgb(var(--destructive-foreground));
+}
+
+.variant-outline {
+  border-color: rgb(var(--border));
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
+
+.variant-ghost {
+  background-color: transparent;
+  color: rgb(var(--foreground));
+}
+
+.fill-darken:hover:not(:disabled) {
+  background-color: color-mix(in oklab, var(--button-fill) var(--button-hover-mix), black);
+}
+
+.fill-darken:active:not(:disabled) {
+  background-color: color-mix(in oklab, var(--button-fill) var(--button-active-mix), black);
+}
+
+.fill-lighten:hover:not(:disabled) {
+  background-color: color-mix(
+    in srgb,
+    var(--button-fill) var(--button-hover-mix-secondary),
+    var(--button-fill-target)
+  );
+}
+
+.fill-lighten:active:not(:disabled) {
+  background-color: color-mix(
+    in srgb,
+    var(--button-fill) var(--button-active-mix-secondary),
+    var(--button-fill-target)
+  );
+}
+
+.surface-tint:hover:not(:disabled) {
+  background-color: var(--field-input-halo);
+}
+
+.surface-tint:active:not(:disabled) {
+  background-color: var(--field-input-halo-active);
+}

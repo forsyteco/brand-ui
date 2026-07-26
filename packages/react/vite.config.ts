@@ -14,34 +14,24 @@ const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
 const componentEntries = [
-  'avatar',
-  'breadcrumb',
-  'button',
-  'calendar',
-  'card',
-  'checkbox',
-  'combobox',
-  'counter-label',
-  'dialog',
-  'disclosure',
-  'dropdown-menu',
-  'fieldset',
-  'icon-button',
-  'input',
-  'listbox',
-  'popover',
-  'radio-group',
-  'relative-time',
-  'select',
-  'skeleton',
-  'sonner',
-  'spinner',
-  'switch',
-  'tabs',
-  'textarea',
   'theme',
-  'transition',
   'visually-hidden',
+  'spinner',
+  'button',
+  'label',
+  'popover',
+  'input',
+  'form-field',
+  'textarea',
+  'checkbox',
+  'switch',
+  'select',
+  'card',
+  'skeleton',
+  'avatar',
+  'dropdown-menu',
+  'breadcrumb',
+  'dialog',
 ];
 
 const libEntries = {
@@ -74,6 +64,11 @@ export default defineConfig({
       outDir: 'dist',
     }),
   ],
+  resolve: {
+    alias: {
+      '#test-utils': resolve(__dirname, 'src/test/test-utils.tsx'),
+    },
+  },
   build: {
     lib: {
       entry: libEntries,
@@ -81,8 +76,16 @@ export default defineConfig({
       fileName: (format, entryName) => withFileName(entryName, format),
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: (id) =>
+        id === 'react' ||
+        id === 'react-dom' ||
+        id === 'react/jsx-runtime' ||
+        id.startsWith('@base-ui/') ||
+        id === 'dayjs' ||
+        id.startsWith('react-day-picker') ||
+        id === '@headlessui/react',
       output: {
+        assetFileNames: 'brand-ui.css',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
