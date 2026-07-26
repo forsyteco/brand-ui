@@ -23,6 +23,7 @@ const componentEntries = [
   'input',
   'form-field',
   'textarea',
+  'checkbox',
 ];
 
 const libEntries = {

@@ -106,6 +106,16 @@
         "default": "./dist/textarea/index.cjs"
       }
     },
+    "./checkbox": {
+      "import": {
+        "types": "./dist/checkbox/index.d.ts",
+        "default": "./dist/checkbox/index.mjs"
+      },
+      "require": {
+        "types": "./dist/checkbox/index.d.ts",
+        "default": "./dist/checkbox/index.cjs"
+      }
+    },
     "./styles.css": "./styles.css",
     "./components.css": "./dist/brand-ui.css",
     "./fonts/*": "./fonts/*",
